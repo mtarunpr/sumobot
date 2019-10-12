@@ -16,5 +16,9 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  
+  if (digitalRead(BUTTON_PIN2) == HIGH)
+  {
+    digitalWrite(LED_PIN1, LOW);
+    digitalWrite(LED_PIN2, HIGH);
+  }
 }
