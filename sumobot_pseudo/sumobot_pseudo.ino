@@ -12,6 +12,8 @@ const int FREF = 3;
 const int RREF = 4;
 const int BREF = 5;
 
+bool leftHigh = true;
+
 void charge() {
   analogWrite(LMOTOR1, 128);
   analogWrite(LMOTOR2, 0);
@@ -76,17 +78,26 @@ void loop() {
   {
     charge();
   }
-  else if (distL == HIGH && distM == HIGH && distR == LOW)
+  else if (distL == HIGH && distR == LOW)
   {
     lTurn();
+    leftHigh = true;
   }
-  else if (distL == LOW && distM == HIGH && distR == HIGH)
+  else if (distL == LOW && distR == HIGH)
   {
     rTurn();
+    leftHigh = false;
   }
   else if (distL == LOW && distM == LOW && distR == LOW)
   {
-    lTurn();
+    if (leftHigh)
+    {
+      lTurn();
+    }
+    else
+    {
+      rTurn();
+    }
   }
 
   if (refF == HIGH)
