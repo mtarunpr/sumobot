@@ -1,24 +1,24 @@
 const int GND = 9;
-const int VCC = 8;
-const int L = 7;
-const int M = 6;
-const int R = 5;
+const int VIN = 10;
+const int SDL = 8;
+const int SCA = 7;
+const int XSHUT = 6;
 
 void setup() {
   // put your setup code here, to run once:
   pinMode(GND, OUTPUT);
-  pinMode(VCC, OUTPUT);
-  pinMode(L, INPUT);
-  pinMode(M, INPUT);
-  pinMode(R, INPUT);
+  pinMode(VIN, OUTPUT);
+  
+  pinMode(SDL, INPUT);
+  pinMode(SCA, INPUT);
   
   digitalWrite(GND, LOW);
-  digitalWrite(VCC, HIGH);
+  digitalWrite(VIN, HIGH);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  Serial.print(digitalRead(L));
+  Serial.print(analogRead(SCA));
   Serial.print("\n");
   delay(1000);
 }
